@@ -1,20 +1,9 @@
-import { Books } from '/imports/api/books/books.js';
-
 import './profile.html';
-
-
-Template.profile.onCreated(function () {
-  Meteor.subscribe('Books.all');
-});
-
 
 Template.profile.helpers({
     'userProfile': function(){
         const userProfile = Meteor.user().profile;
         return userProfile;
-    },
-    formCollection() {
-        return Books;
     },
     states(){
         stateArray = [
