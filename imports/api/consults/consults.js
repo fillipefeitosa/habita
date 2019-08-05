@@ -23,6 +23,12 @@ Consults.allow({
 });
 
 ConsultSchema = new SimpleSchema({
+    //  User ID of the responsible
+    submitedBy: {
+        type: String,
+        autoValue: function(){ return this.userId },
+        autoform: { type: "hidden", label: false }
+    },
     // 2. Caracterização e Localização do AF
     site: {
         type: String,

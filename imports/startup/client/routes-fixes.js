@@ -37,3 +37,7 @@ Accounts.onLogin(function(){
     Meteor.logoutOtherClients();
     return Session.set('loggedIn', true);
 });
+
+Meteor.logout(function(){
+    FlowRouter.redirect('/'); 
+});
