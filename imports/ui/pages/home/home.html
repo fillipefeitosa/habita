@@ -1,22 +1,15 @@
 <template name="App_home">
-    <style>
-        body {
-            padding-top: 70px;
-        }
-
-        .navbar.navbar-inverse {
-            border: none;
-        }
-
-        .navbar .navbar-brand {
-            padding-top: 0px;
-        }
-
-        .navbar .navbar-brand img {
-            height: 50px;
-        }
-    </style>
     {{> navbar}}
-    {{> profile}}
-    {{> consults}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {{> Template.dynamic template=sidemenu}}
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                {{> Template.dynamic template=pageContent}}
+            </div>
+        </div>
+
+    </div>
 </template>

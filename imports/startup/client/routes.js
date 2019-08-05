@@ -8,6 +8,7 @@ import '../../ui/pages/home/home.js';
 import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/login/login.js';
 
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_body', { main: 'App_notFound' });
@@ -19,14 +20,14 @@ exposed = FlowRouter.group({});
 exposed.route('/login', {
     name: 'login',
     action: function(){
-        BlazeLayout.render('login', { top: "header", main: "App_home", pageContent:"info"});
+        BlazeLayout.render('login', { main: "App_home"});
     }
 });
+
 
 // Internal App routes
 // Logged Routes
 loggedIn = FlowRouter.group({
-    prefix: '/',
     triggersEnter: [
         function(){
             var route;
@@ -45,6 +46,13 @@ loggedIn = FlowRouter.group({
 loggedIn.route("/", {
     name: 'App.home',
     action() {
-      BlazeLayout.render('App_body', { main: 'App_home' });
+        BlazeLayout.render('App_body', { main: 'App_home', pageContent: "profile", sidemenu: 'sidemenu' });
     },
+});
+
+loggedIn.route('/consult', {
+    name: 'consult',
+    action: function(){
+        BlazeLayout.render('App_body', { main: "App_home", pageContent:'consults', sidemenu:'sidemenu'});
+    }
 });
