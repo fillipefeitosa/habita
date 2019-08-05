@@ -4,7 +4,7 @@ import { AutoForm } from 'meteor/aldeed:autoform';
 import { states, qualifications, vulnerableTypes, yesNoRadio, habObjectiveDepravation } from './formData.js';
 import { neighborhoodTypology, residenceType, residenceOcupationType } from './formData.js';
 import { significativeSocialProblems, generalAFSocialPerception } from './formData.js';
-import { socialServicesToAfFromSource, sourcesAndTotalValuesAF } from './formData.js';
+import { socialServicesToAfFromSource, sourcesAndTotalValuesAF, afLivesInBadComunity } from './formData.js';
 
 SimpleSchema.extendOptions(['autoform']);
 
@@ -26,18 +26,18 @@ ConsultSchema = new SimpleSchema({
     // 2. Caracterização e Localização do AF
     site: {
         type: String,
-        label: "Freguesia",
+        label: "2.1 Localização da residência do Agregado Familiar - Lugar",
         allowedValues: states
     },
     size: {
         type: SimpleSchema.Integer,
-        label: "Tamanho da Família",
+        label: "2.2 Tamanho da Família",
         minCount: 1,
     },
     element: {
         type: Array,
         optional: true,
-        label: "Membros da Família",
+        label: "2.3 Membros da Família",
         maxCount: 9
     },
     "element.$": {
@@ -68,7 +68,7 @@ ConsultSchema = new SimpleSchema({
     },
     elementIsVulnerable: {
         type: SimpleSchema.Integer,
-        label: "Membros do Agregado Familiar pertencem a grupo social vulnerável?",
+        label: "2.4.1 O Agregado Familiar pode ser associado a um ou mais grupos sociais vulneráveis? (a definição de grupos sociais vulneráveis é aberta, podendo ser consultada algumas propostas de definição na questão abaixo)",
         optional: true,
         autoform: {
             type: 'select-radio',
@@ -77,7 +77,7 @@ ConsultSchema = new SimpleSchema({
     },
     vulnerableTypes: {
         type: Array,
-        label: "Quais os tipos de grupo social vulnerável em que se enquadram os membros do agregado familiar?",
+        label: "2.4.2 Quais os tipos de grupo social vulnerável em que se enquadram os membros do Agregado Familiar?",
         optional: true,
         autoform: {
             type: 'select-checkbox',
@@ -87,7 +87,7 @@ ConsultSchema = new SimpleSchema({
     'vulnerableTypes.$': SimpleSchema.Integer,
     vulnerableTypesObs: {
         type: String,
-        label: "Quais os tipos de grupo social vulnerável em que se enquadram os membros do agregado familiar?, Outro",
+        label: "2.4.3 Caso considere necessário, identifique outras tipologias de grupo social vulnerável em que podemos enquadrar o Agregado Familiar.",
         optional: true,
         max: 500,
         autoform: {
@@ -96,18 +96,18 @@ ConsultSchema = new SimpleSchema({
     },
     afLivesInBadComunity: {
         type: SimpleSchema.Integer,
-        label: "O Agregado Familiar reside na área territorial de comunidades desfavorecidas?",
+        label: '2.5 O Agregado Familiar reside em território de comunidade desfavorecida, identificado no "plano de ação integrado para comunidades / agregados desfavorecidos" do Município de Celorico da Beira?' ,
         optional: true,
         autoform: {
-            type: 'select-radio',
-            options: function(){return yesNoRadio}
+            type: 'select',
+            options: function(){return afLivesInBadComunity}
         }
     },
     // 3. Caraterização geral do alojamento do AF
     neighborhoodTypology: {
         type: SimpleSchema.Integer,
         optional: true,
-        label: "Tipologia do espaço urbano onde se localiza a residência",
+        label: "3.1 Identifique o tipo de espaço urbano onde se localiza a residência do Agregado Familiar.",
         autoform: {
             type: 'select',
             options: function(){return neighborhoodTypology}
@@ -116,7 +116,7 @@ ConsultSchema = new SimpleSchema({
     residenceType: {
         type: SimpleSchema.Integer,
         optional: true,
-        label: "Tipo de Construção do alojamento",
+        label: "3.2 Identifique o tipo de construção da habitação onde reside o Agregado Familiar. ",
         autoform: {
             type: 'select',
             options: function(){return residenceType}
@@ -125,13 +125,13 @@ ConsultSchema = new SimpleSchema({
     roomsQuantity: {
         type: SimpleSchema.Integer,
         optional: true,
-        label: "Número de Quartos do Alojamento",
+        label: "3.3 Identifique o número de quartos da habitação onde reside o Agregado Familiar. ",
         min: 1,
     },
     residenceOcupationType: {
         type: SimpleSchema.Integer,
         optional: true,
-        label: "Tipo de ocupação do alojamento",
+        label: "3.4.1 Identifique o regime de ocupação da habitação onde reside o Agregado Familiar.",
         autoform: {
             type: 'select',
             options: function(){return residenceOcupationType}
@@ -139,7 +139,7 @@ ConsultSchema = new SimpleSchema({
     },
     residenceOcupationTypeObs: {
         type: String,
-        label: "Tipo de ocupação do alojamento, outros?",
+        label: "3.4.2 Informações adicionais relevantes sobre o regime de ocupação da habitação onde reside o Agregado Familiar. (preenchimento opcional)",
         optional: true,
         max: 500,
         autoform: {
@@ -149,13 +149,13 @@ ConsultSchema = new SimpleSchema({
     roomsQuantity: {
         type: Number,
         optional: true,
-        label: "Número de Quartos do Alojamento",
+        label: "3.4.3 Identifique, se possível, o valor de renda ou de prestação bancária (para os casos aplicáveis) suportado pelo Agregado Familiar. (valor mensal)",
         min: 1,
         max: 20
     },
     habObjectiveDepravation: {
         type: Array,
-        label: "Situações de carência habitacional objetivas? Quais?",
+        label: "3.5.1 Assinale as situações de carências habitacionais objetivas que podem ser associadas ao Agregado Familiar (podem ser assinaladas múltiplas opções)",
         optional: true,
         autoform: {
             type: 'select-checkbox',
@@ -165,7 +165,7 @@ ConsultSchema = new SimpleSchema({
     'habObjectiveDepravation.$': SimpleSchema.Integer,
     habObjectiveDepravationObs: {
         type: String,
-        label: "Outra situação de carência habitacional. Qual?",
+        label: "3.5.2 Descreva outras situações (não mencionadas na questão anterior) que considere relevantes para a descrição e identificação de carências habitacionais. (preenchimento opcional)",
         optional: true,
         max: 500,
         autoform: {
@@ -176,7 +176,7 @@ ConsultSchema = new SimpleSchema({
     // 4. Situação social e económica do agregado familiar
     significativeSocialProblems: {
         type: Array,
-        label: "Problemas sociais e económicos mais significativos (suspeitos e sinalizados)?",
+        label: "4.1.1 Assinale o conjunto de problemas sócio-económicos (sinalizados oficialmente ou dos quais existem 'suspeitas' de que ocorrem), que considere explicativos das situações de carências habitacionais enfrentadas pelo Agregado Familiar. (podem ser assinaladas múltiplas opções)",
         optional: true,
         autoform: {
             type: 'select-checkbox',
@@ -186,7 +186,7 @@ ConsultSchema = new SimpleSchema({
     'significativeSocialProblems.$': SimpleSchema.Integer,
     significativeSocialProblemsObs: {
         type: String,
-        label: "Outros problemas sociais e económicos?",
+        label: "4.1.2 Descreva outros problemas sociais e económicos que considere relevantes mas não assinalados na questão anterior.",
         optional: true,
         max: 500,
         autoform: {
@@ -197,7 +197,7 @@ ConsultSchema = new SimpleSchema({
     generalAFSocialPerception: {
         type: SimpleSchema.Integer,
         optional: true,
-        label: "Percepção geral sobre Carências Sociais e Económicas do AF",
+        label: "4.2 Identifique qual a sua percepção geral sobre a existência de carências sociais e económicas no Agregado Familiar.",
         autoform: {
             type: 'select',
             options: function(){return generalAFSocialPerception}
@@ -207,13 +207,13 @@ ConsultSchema = new SimpleSchema({
     afUtenteNumber: {
         type: Number,
         optional: true,
-        label: "Número de elementos do AF utentes de estruturas das rede social / IPSSs?",
+        label: "4.3 Identifique o número de elementos do Agregado Familiar que sejam utentes de pelo menos um serviço oferecido por instituições da rede social (IPSSs, ...).",
         min: 1,
         max: 20
     },
     socialServicesToAfFromSource: {
         type: Array,
-        label: "Apoios sociais prestados pela instituição do respondente a elementos do AF?",
+        label: "4.4.1 Identifique os apoios sociais prestados pela instituição (do respondente deste inquérito) a elementos do Agregado Familiar. (podem ser assinaladas múltiplas opções)",
         optional: true,
         autoform: {
             type: 'select-checkbox',
@@ -223,7 +223,7 @@ ConsultSchema = new SimpleSchema({
     'socialServicesToAfFromSource.$': SimpleSchema.Integer,
     socialServicesToAfFromSourceObs: {
         type: String,
-        label: "Outros apoios sociais prestados pela instituição do respondente a elementos do AF?, quais?",
+        label: "4.4.2 Descreva outros apoios sociais, não descritos na questão anterior, prestados pela instituição (do respondente) a elementos do Agregado Familiar. (preenchimento opcional)",
         optional: true,
         max: 500,
         autoform: {
@@ -233,7 +233,7 @@ ConsultSchema = new SimpleSchema({
     sourcesAndTotalValuesAF: {
         type: Array,
         optional: true,
-        label: "Fonte e valores totais dos rendimentos mensais conhecidos do AF",
+        label: "4.5 Descreva, na medida do possível, as fontes e valores dos rendimentos mensais do Agregado Familiar.",
         maxCount: 9
     },
     "sourcesAndTotalValuesAF.$": {
@@ -261,6 +261,22 @@ ConsultSchema = new SimpleSchema({
         max: 200,
         label: 'Detalhes',
         optional: true,
+    },
+    subjectiveEvaluationPercent: {
+        type: Number,
+        optional: true,
+        label: "4.6 Avaliação subjetiva do grau de esforço económico do Agregado Familiar com a habitação - incluindo despesas com serviços básicos essenciais - electricidade, água, saneamento; indique a percentagem estimada do do rendimento total do Agregado Familiar a que correspondem as despesas referidas,",
+        min: 1,
+        max: 500
+    },
+    aditionalInformation: {
+        type: String,
+        label: "5 Informação complementar / Observações",
+        optional: true,
+        max: 500,
+        autoform: {
+            type: 'textarea'
+        }
     },
 });
 

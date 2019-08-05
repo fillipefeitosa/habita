@@ -1,17 +1,17 @@
 <template name="profile">
-    <h2>Dados Pessoais</h2>
+    <h2>Dados Pessoais do Respondete</h2>
     <form>
         <div class="form-group">
             <input type="text" class="form-control" name="name" placeholder="Nome Completo"
                 value="{{userProfile.name}}">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="institution" placeholder="Instituição"
+            <input type="text" class="form-control" name="institution" placeholder="Instituição que o Respondente Representa"
                 value="{{userProfile.institution}}">
         </div>
         <div class="form-group float-label-control">
-            <label for="">Sede da Instituição</label>
-            <select name="headquarters" class="minimal">
+            <label for="">Sede da Instituição Representada</label>
+            <select name="headquarters">
                 <option selected>{{userProfile.headquarters}}</option>
                 {{#each states}}
                 <option value="{{this.[0]}}">{{this.[0]}}</option>
@@ -25,8 +25,9 @@
         </div>
 
         <div class="form-group float-label-control">
-            <label for="">Lugares de Intervenção</label>
-            <small id="sitesDefined" class="form-text text-muted">Sítios: {{userProfile.sites}}</small>
+            <label for="">Lugares de Intervenção da Instituição. (Selecione todos os lugares aplicáveis)</label>
+            <small id="sitesDefined" class="form-text text-muted">Lugares: {{userProfile.sites}}</small>
+            <br><br>
             <select name="sites" class="custom-select" multiple>
                 {{#each states}}
                 <option value="{{this.[0]}}">{{this.[0]}}</option>

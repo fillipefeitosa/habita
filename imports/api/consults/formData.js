@@ -104,31 +104,31 @@ export const habObjectiveDepravation = [
     {label:"Alojamento s/ pelo menos uma das infraestruturas / serviços básicos (eletricidade, água, saneamento)",value:1},
     {label:"Alojamento a necessitar de obras reparação em elementos estruturantes (telhado, placa divisória entre pisos, …)",value:2},
     {label:"Alojamento inadequado face às condições de saúde dos residentes (mobilidade - acesso interior / com o exterior, problemas de saúde crónicos e respetivos requisitos para prestação de assistência, ...)",value:3},
-    {label:"Alojamento de dimensão inadequada ao tamanho do AF",value:4},
+    {label:"Alojamento de dimensão inadequada ao tamanho do Agregado Familiar",value:4},
     {label:"Alojamento adaptado de estruturas não convencionais (incluindo adaptação de antigas lojas de animais, de garagens, de anexos / arrumos, de espaços comerciais, entre outras situações não convencionais)",value:5},
     {label:"Alojamento localizado em área urbana com riscos ambientais e sociais (níveis de poluentes e/ou ruído acima dos valores permitidos, problemas de saúde epidémicos / de saúde pública recorrentes).",value:6},
-    {label:"Alojamento sem uma manutenção considerada adequada / convencional face às características do AF (limpeza, privacidade entre os ocupantes, funcionamento dos dispositivos / mecanismos estruturais - elementos da instalação elétrica ou da canalização entre outros)",value:7},
+    {label:"Alojamento sem uma manutenção considerada adequada / convencional face às características do Agregado Familiar (limpeza, privacidade entre os ocupantes, funcionamento dos dispositivos / mecanismos estruturais - elementos da instalação elétrica ou da canalização entre outros)",value:7},
 ];
 
 export const significativeSocialProblems = [
-    {label:"Existência no AF de doenças crónicas",value:0},
-    {label:"Existência no AF de doença mental",value:1},
-    {label:"Existência no AF de incapacidades físicas",value:2},
+    {label:"Existência no Agregado Familiar de doenças crónicas",value:0},
+    {label:"Existência no Agregado Familiar de doença mental",value:1},
+    {label:"Existência no Agregado Familiar de incapacidades físicas",value:2},
     {label:"Existência de problemas de dependências (Alcoolismo, droga, …)",value:3},
     {label:"Situações de violência doméstica",value:4},
-    {label:"Conflitos familiares no AF",value:5},
+    {label:"Conflitos familiares no Agregado Familiar",value:5},
     {label:"Incapacidade de fazer face às despesas com o alojamento",value:6},
-    {label:"Absentismo escolar dos elementos em idade escolar do AF",value:7},
+    {label:"Absentismo escolar dos elementos em idade escolar do Agregado Familiar",value:7},
     {label:"Desemprego de longa duração ou inatividade socioeconomica",value:8},
 ];
 
 export const generalAFSocialPerception = [
-    {label:"AF em situação de carência social e económica visível / declarada / sinalizada", value: 0},
-    {label: "AF em situação de carência social e económica escondida / suspeita de / não sinalizada", value: 1}
+    {label:"Agregado Familiar em situação de carência social e económica visível / declarada / sinalizada", value: 0},
+    {label: "Agregado Familiar em situação de carência social e económica escondida / suspeita de / não sinalizada", value: 1}
 ];
 
 export const socialServicesToAfFromSource = [
-    {label:"Institucionalização de elemento do AF",value:0},
+    {label:"Institucionalização de elemento do Agregado Familiar",value:0},
     {label:"Apoio alimentar",value:1},
     {label:"Apoio domiciliário",value:2},
     {label:"Ocupação de idosos / Centro de dia",value:3},
@@ -147,3 +147,11 @@ export const sourcesAndTotalValuesAF = [
     {label:"Outra situação",value:7},
     {label:"Sem rendimentos conhecidos",value:8},
 ];
+
+export const afLivesInBadComunity = [
+    {label:"Sim, na comunidade localizada na Rua do Picoto",value:0},
+    {label:"Sim, na comunidade localizada na Rua da Fonte da Pipa",value:1},
+    {label:"Sim, na comunidade localizada no Bairro de Santa Luzia",value:2},
+    {label:"Não",value:3},
+    {label:"Não Sei",value:4},
+]
