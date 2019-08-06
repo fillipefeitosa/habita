@@ -1,9 +1,14 @@
 import './profile.html';
 
 Template.profile.helpers({
+    // This avoids the error while profile is being loaded
     'userProfile': function(){
-        const userProfile = Meteor.user().profile;
-        return userProfile;
+        if (Meteor.user()){
+            const userProfile = Meteor.user().profile;
+            if ( ! Meteor.loggingIn()){
+                return userProfile;
+            }
+        }
     },
     states(){
         stateArray = [

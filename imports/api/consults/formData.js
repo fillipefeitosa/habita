@@ -106,8 +106,10 @@ export const habObjectiveDepravation = [
     {label:"Alojamento inadequado face às condições de saúde dos residentes (mobilidade - acesso interior / com o exterior, problemas de saúde crónicos e respetivos requisitos para prestação de assistência, ...)",value:3},
     {label:"Alojamento de dimensão inadequada ao tamanho do Agregado Familiar",value:4},
     {label:"Alojamento adaptado de estruturas não convencionais (incluindo adaptação de antigas lojas de animais, de garagens, de anexos / arrumos, de espaços comerciais, entre outras situações não convencionais)",value:5},
-    {label:"Alojamento localizado em área urbana com riscos ambientais e sociais (níveis de poluentes e/ou ruído acima dos valores permitidos, problemas de saúde epidémicos / de saúde pública recorrentes).",value:6},
+    {label:"Alojamento localizado em área urbana com riscos ambientais e sociais (níveis de poluentes e/ou ruído acima dos valores permitidos, problemas de saúde epidémicos / de saúde pública recorrentes - incluindo níveis de ruído críticos em vários períodos do dia ).",value:6},
     {label:"Alojamento sem uma manutenção considerada adequada / convencional face às características do Agregado Familiar (limpeza, privacidade entre os ocupantes, funcionamento dos dispositivos / mecanismos estruturais - elementos da instalação elétrica ou da canalização entre outros)",value:7},
+    {label:"Alojamento com condições inadequadas de conforto térmico (Inverno e/ou Verão)",value:8},
+
 ];
 
 export const significativeSocialProblems = [

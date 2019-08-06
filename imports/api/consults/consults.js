@@ -38,7 +38,7 @@ ConsultSchema = new SimpleSchema({
     size: {
         type: SimpleSchema.Integer,
         label: "2.2 Tamanho da Família",
-        minCount: 1,
+        min: 1,
     },
     element: {
         type: Array,
@@ -284,6 +284,6 @@ ConsultSchema = new SimpleSchema({
             type: 'textarea'
         }
     },
-});
+}, {tracker: Tracker});
 
 Consults.attachSchema(ConsultSchema);
