@@ -17,3 +17,7 @@ Meteor.publish('Consults.byColaborator', function(){
         this.ready();
     }
 });
+
+Meteor.publish('Consults.single', function (documentId) {
+    return Consults.find({ _id: documentId });
+});

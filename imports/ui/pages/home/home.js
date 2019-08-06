@@ -7,3 +7,4 @@ import '../../components/consults/consults.js';
 import '../../components/navbar/navbar.js';
 import '../../components/sidemenu/sidemenu.js';
 import '../../components/aflist/aflist.js';
+import '../../components/formupdate/formupdate.js';

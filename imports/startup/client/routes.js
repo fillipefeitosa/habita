@@ -63,3 +63,11 @@ loggedIn.route('/report', {
         BlazeLayout.render('App_body', { main: "App_home", pageContent:'aflist', sidemenu:'sidemenu'});
     }
 });
+
+loggedIn.route('/formupdate/:docId', {
+    name: 'formupdate',
+    action: function(params, queryParams){
+        console.log('I am on the chart:', params.docId);
+        BlazeLayout.render('App_body', { main: "App_home", pageContent:'formupdate', sidemenu:'sidemenu'});
+    }
+});

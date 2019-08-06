@@ -11,4 +11,7 @@ Template.aflist.helpers({
     consults(){
         return Consults.find({});
     },
+    getConsult(docId){
+        return Consults.findOne({docId});
+    }
 });
