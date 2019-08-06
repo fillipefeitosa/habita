@@ -56,3 +56,10 @@ loggedIn.route('/consult', {
         BlazeLayout.render('App_body', { main: "App_home", pageContent:'consults', sidemenu:'sidemenu'});
     }
 });
+
+loggedIn.route('/report', {
+    name: 'report',
+    action: function(){
+        BlazeLayout.render('App_body', { main: "App_home", pageContent:'aflist', sidemenu:'sidemenu'});
+    }
+});
