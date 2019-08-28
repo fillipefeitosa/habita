@@ -24,6 +24,12 @@ exposed.route('/login', {
     }
 });
 
+exposed.route('/register', {
+    name: 'register',
+    action: function(){
+        BlazeLayout.render('register', {main: "App_home"});
+    }
+})
 
 // Internal App routes
 // Logged Routes
