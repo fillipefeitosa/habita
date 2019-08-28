@@ -9,16 +9,16 @@
             <input type="text" class="form-control" name="institution" placeholder="Instituição que o Respondente Representa"
             value="{{userProfile.institution}}">
         </div>
-        <div class="form-group float-label-control">
+        <div class="form-group">
             <label for="">Sede da Instituição Representada</label>
-            <select name="headquarters">
+            <select class="form-control" name="headquarters">
                 <option selected>{{userProfile.headquarters}}</option>
                 {{#each states}}
                 <option value="{{this.[0]}}">{{this.[0]}}</option>
                 {{/each}}
             </select>
         </div>
-
+        
         <div class="form-group">
             <input type="text" class="form-control" name="profession" placeholder="Profissão"
             value="{{userProfile.profession}}">

@@ -35,3 +35,6 @@ raix:handlebar-helpers
 msavin:jetsetter
 alanning:roles
 dburles:mongo-collection-instances
+dburles:collection-helpers
+imajus:autoform-bootstrap4
+fortawesome:fontawesome

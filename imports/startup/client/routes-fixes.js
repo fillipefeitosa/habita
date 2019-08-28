@@ -39,5 +39,5 @@ Accounts.onLogin(function(){
 });
 
 Meteor.logout(function(){
-    FlowRouter.redirect('/'); 
+    FlowRouter.redirect('/');
 });

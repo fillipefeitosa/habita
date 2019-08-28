@@ -1,15 +1,84 @@
 <template name="login">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-                <!-- Start Sign In Form -->
+        * {
+            box-sizing: border-box;
+        }
+
+        .bg-image {
+            /* The image used */
+            background: url(img/mountain.png) no-repeat center center fixed;
+
+            /* Add the blur effect */
+            filter: blur(8px);
+            -webkit-filter: blur(8px);
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Position text in the middle of the page/image */
+        .bg-text {
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+            color: white;
+            font-weight: bold;
+            border: 3px solid #f1f1f1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+    <div class="bg-image"></div>
+
+    <div class="bg-text">
+        <h2>Blurred Background</h2>
+        <h1 style="font-size:50px">I am John Doe</h1>
+        <p>And I'm a Photographer</p>
+    </div>
+
+
+    <div class="modal-dialog text-center">
+        <div class="col-sm-9 main-section">
+            <div class="modal-content">
+
+                <div class="col-12 user-img">
+                    <img src="img/face.png">
+                </div>
 
                 {{> loginButtons}}
+                <div class="col-12 form-input">
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Entre E-mail">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Senha">
+                        </div>
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </form>
+                </div>
+
+                <div class="col-12 forgot">
+                    <a href="#">Forgot Password?</a>
+                </div>
 
             </div>
-            <div class="col-md-4"></div>
         </div>
     </div>
 </template>

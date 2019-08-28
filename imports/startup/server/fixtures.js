@@ -15,7 +15,7 @@ Meteor.startup(() => {
    }
    // Make new user as 'Convidado role'
    Accounts.onCreateUser(function(options, user){
-       user.roles = ['Convidado'];
+       user.roles = ['Colaborador'];
        return user;
    });
 
