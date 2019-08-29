@@ -2,6 +2,8 @@
 import 'bootstrap';
 import popper from 'popper.js';
 
+import 'bootstrap-multiselect';
+
 import '/imports/startup/client';
 import '/imports/startup/both';
 

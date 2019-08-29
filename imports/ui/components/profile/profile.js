@@ -1,5 +1,11 @@
 import './profile.html';
 
+Template.profile.onRendered(function(){
+    this.autorun(() => {
+         $('#sites').multiselect();
+    });
+});
+
 Template.profile.helpers({
     // This avoids the error while profile is being loaded
     'userProfile': function(){
@@ -8,6 +14,13 @@ Template.profile.helpers({
             if ( ! Meteor.loggingIn()){
                 return userProfile;
             }
+        }
+    },
+    'userHasStateSelected': function(site){
+        if (Meteor.user()){
+            let userSites = Meteor.user().profile.sites;
+            let test = userSites.includes(site)
+            return test;
         }
     },
     states(){
