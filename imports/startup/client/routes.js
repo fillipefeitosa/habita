@@ -29,6 +29,13 @@ exposed.route('/register', {
     action: function(){
         BlazeLayout.render('register', {main: "App_home"});
     }
+});
+
+exposed.route('/test', {
+    name: 'test',
+    action: function(){
+        BlazeLayout.render('App_body', {main:'test'});
+    }
 })
 
 // Internal App routes
