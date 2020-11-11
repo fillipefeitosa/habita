@@ -7,10 +7,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
-    "bcrypt": "^3.0.6",
-    "bootstrap": "^4.3.1",
-    "bootstrap-multiselect": "^0.9.13-1",
-    "jquery": "^3.4.1",
+    "bcrypt": "^5.0.0",
+    "bootstrap": "^4.5.3",
+    "bootstrap-multiselect": "^0.9.15",
+    "jquery": "^3.5.1",
     "meteor-node-stubs": "^0.4.1",
     "popper.js": "^1.15.0",
     "simpl-schema": "^1.4.0"
