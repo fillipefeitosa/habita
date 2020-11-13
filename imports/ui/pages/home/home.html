@@ -1,16 +1,11 @@
 <template name="App_home">
-    {{> navbar}}
-    <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                {{> Template.dynamic template=sidemenu}}
-            </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-6">
-                {{> Template.dynamic template=pageContent}}
-            </div>
-        </div>
-
+  {{> navbar}}
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">{{> Template.dynamic template=sidemenu}}</div>
+      <!-- <div class="col-md-1"></div> -->
+      <div class="col-md-8">{{> Template.dynamic template=pageContent}}</div>
     </div>
+  </div>
 </template>
