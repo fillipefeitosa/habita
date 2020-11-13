@@ -16,7 +16,7 @@ Template.register.events({
         event.preventDefault();
         var userObject = { 
             email: event.target.email.value, 
-            password: event.target.email.value
+            password: event.target.password.value
         }; 
          
         Accounts.createUser(userObject, function(err) { 
