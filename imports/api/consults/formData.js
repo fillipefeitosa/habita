@@ -126,14 +126,97 @@ export const residenceType = [
   { label: "Construção assente em elementos naturais ", value: 6 },
 ];
 
+export const residenceProblemOptions = [
+  {
+    label:
+      "Ausência de abastecimento de infrastruturas (electricidade, água da rede pública, escoamento de esgotos domésticos e pluviais, linha de telefone, acesso TV e Internet, gás, …)",
+    value: 0,
+  },
+  {
+    label:
+      "Problemas decorrentes de mau ordenamento urbanístico (localização em áreas de risco, má exposição solar da habitação, fraca qualidade visual/paisagística do espaço urbano envolvente à habitação, etc…)",
+    value: 1,
+  },
+  {
+    label: "Ausência ou acesso inadequado aos eixos viários principais",
+    value: 2,
+  },
+  {
+    label: "Ausência ou insuficiente cobertura a nível de transportes públicos",
+    value: 3,
+  },
+  {
+    label:
+      "Ausência ou insuficiência a nível de parqueamento público (lugares de estacionamento)",
+    value: 4,
+  },
+  ,
+  {
+    label:
+      "Não proximidade  ou dificuldades de acesso a equipamentos públicos, comércio e outros locais necessários à vida quotidiana",
+    value: 5,
+  },
+  {
+    label: "Existência de poluição sonora no local residência/área envolvente",
+    value: 6,
+  },
+  {
+    label:
+      "Ausência ou Insuficiências a nível do sistema de recolha de resíduos sólidos",
+    value: 7,
+  },
+  { label: "Falta ou má qualidade de espaços exteriores públicos", value: 8 },
+  { label: "Outro problema. Qual?", value: 9 },
+];
+export const residenceConstructionOptions = [
+  { label: "Convencional", value: 0 },
+  { label: "Não convencional de pedra, alvenaria ou tijolo", value: 1 },
+  { label: "Hotel e similares", value: 2 },
+  { label: "Prefabricado", value: 3 },
+  { label: "Móveis/caravanas", value: 4 },
+  { label: "Tenda", value: 5 },
+  { label: "Barraca", value: 6 },
+  { label: "Construção assente em elementos naturais", value: 7 },
+  { label: "Outra, qual?", value: 8 },
+];
+
+export const residenceTypeOptions = [
+  { label: "T0", value: 0 },
+  { label: "T1", value: 1 },
+  { label: "T2", value: 2 },
+  { label: "T3", value: 3 },
+  { label: "T4", value: 4 },
+  { label: "T5", value: 5 },
+  { label: "Outro, qual?", value: 6 },
+];
+export const residenceUrbanOptions = [
+  {
+    label: "Área de risco (leito, cheia)",
+    value: 0,
+  },
+  { label: "Bairro clandestino", value: 1 },
+  { label: "Bairro social", value: 2 },
+  { label: "Barracas ou construções precárias", value: 3 },
+  { label: "Conjunto urbano consolidado degradado", value: 4 },
+  { label: "Parque de campismo", value: 5 },
+  { label: "Área urbana convencional", value: 6 },
+  { label: "Nenhuma das anteriores", value: 7 },
+];
+
 export const residenceOcupationType = [
-  { label: "Arrendatários privados ", value: 0 },
-  { label: "Arrendatários públicos ", value: 1 },
-  { label: "Cedências ", value: 2 },
-  { label: "Clandestina ", value: 3 },
-  { label: "Concessionários ", value: 4 },
-  { label: "Proprietários sem empréstimo bancário", value: 5 },
-  { label: "Proprietários com empréstimo bancário", value: 6 },
+  { label: "Arrendatários privados", value: "Arrendatários privados" },
+  { label: "Arrendatários públicos", value: "Arrendatários públicos" },
+  { label: "Cedências", value: "Cedências" },
+  { label: "Clandestina", value: "Clandestina" },
+  { label: "Concessionários", value: "Concessionários" },
+  {
+    label: "Proprietários sem empréstimo bancário",
+    value: "Proprietários sem empréstimo bancário",
+  },
+  {
+    label: "Proprietários com empréstimo bancário",
+    value: "Proprietários com empréstimo bancário",
+  },
 ];
 
 export const habObjectiveDepravation = [
@@ -177,6 +260,75 @@ export const habObjectiveDepravation = [
       "Alojamento com condições inadequadas de conforto térmico (Inverno e/ou Verão)",
     value: 8,
   },
+];
+
+export const firstOptions_1 = [
+  { label: "Pessoas sem abrigo", value: 0 },
+  { label: "Pessoas vítimas de violência doméstica", value: 1 },
+  {
+    label:
+      "Pessoas em risco de perda da residência permanente (em risco de despejo, em situação de insolvência, …)",
+    value: 2,
+  },
+  { label: "Reside em Núcleo Precário", value: 3 },
+  { label: "Reside em Núcleo Degradado", value: 4 },
+  {
+    label:
+      "Habitação sem licença de habitabilidade (sem licença de utilização para habitação)",
+    value: 5,
+  },
+  { label: "Outra. Especificar", value: 6 },
+  { label: "Nenhuma", value: 7 },
+];
+
+export const firstOptions_2 = [
+  { value: 0, label: "Alojamento s/ instalações sanitárias" },
+  {
+    value: 1,
+    label:
+      "Alojamento s/ pelo menos uma das infraestruturas/serviços básicos (eletricidade, água, saneamento)",
+  },
+  {
+    value: 2,
+    label:
+      "Alojamento a necessitar de  obras reparação em elementos de estanquidade e segurança estrutural  (telhado, placa divisória entre pisos, pavimentos, portas e janelas, paredes exteriores, …)",
+  },
+  {
+    value: 3,
+    label:
+      "Alojamento a necessitar de  obras de reparação em dispositivos/mecanismos estruturais - elementos da instalação elétrica, da canalização entre outros)",
+  },
+  {
+    value: 4,
+    label:
+      "Alojamento s/condições a nível de conforto térmico e/ou de eficiência energética",
+  },
+  {
+    value: 5,
+    label:
+      "Alojamento sem uma manutenção adequada  a nível de limpeza e higiene ",
+  },
+  { value: 6, label: "Outra. Especificar" },
+  { value: 7, label: "Nenhuma" },
+];
+
+export const firstOptions_4 = [
+  {
+    value: 0,
+    label:
+      "Alojamento adaptado de estruturas não convencionais (incluindo adaptação de antigas 'lojas' de animais, de garagens, de anexos / arrumos, de espaços comerciais, entre outras situações não convencionais)",
+  },
+  {
+    value: 1,
+    label:
+      "Alojamento inadequado face  às caraterísticas específicas dos residentes nomeadamente com incapacidade ou deficiência  - Barreiras exteriores à habitação (barreiras no acesso ao piso/local onde se situa a habitação)",
+  },
+  {
+    value: 2,
+    label:
+      "Alojamento inadequado face  às caraterísticas específicas dos residentes nomeadamente com incapacidade ou deficiência  - Barreiras internas à habitação (medidas de vãos e áreas interiores impedem uma circulação e utilização ajustadas ás caraterísticas dos ocupantes da habitação)",
+  },
+  { value: 3, label: "Nenhuma" },
 ];
 
 export const significativeSocialProblems = [

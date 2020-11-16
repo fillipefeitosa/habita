@@ -2,11 +2,17 @@ import { Mongo } from "meteor/mongo";
 import SimpleSchema from "simpl-schema";
 import { AutoForm } from "meteor/aldeed:autoform";
 import {
-  sitesBasto,
+  residenceTypeOptions,
+  residenceUrbanOptions,
+  residenceConstructionOptions,
+  residenceProblemOptions,
   relationship,
   vulnerableTypes,
   yesNoRadio,
   habObjectiveDepravation,
+  firstOptions_1,
+  firstOptions_2,
+  firstOptions_4,
 } from "./formData.js";
 import {
   neighborhoodTypology,
@@ -119,90 +125,24 @@ ConsultSchema = new SimpleSchema(
         },
       },
     },
-    elementIsVulnerable: {
-      type: SimpleSchema.Integer,
-      label:
-        "2.4.1 O Agregado Familiar pode ser associado a um ou mais grupos sociais vulneráveis? (a definição de grupos sociais vulneráveis é aberta, podendo ser consultada algumas propostas de definição na questão abaixo)",
-      optional: true,
-      autoform: {
-        type: "select-radio",
-        options: function () {
-          return yesNoRadio;
-        },
-      },
-    },
-    vulnerableTypes: {
-      type: Array,
-      label:
-        "2.4.2 Quais os tipos de grupo social vulnerável em que se enquadram os membros do Agregado Familiar?",
-      optional: true,
-      autoform: {
-        type: "select-checkbox",
-        options: function () {
-          return vulnerableTypes;
-        },
-      },
-    },
-    "vulnerableTypes.$": SimpleSchema.Integer,
-    vulnerableTypesObs: {
+    // Part 2 - AF Residence
+    residencetypeOf: {
       type: String,
+      optional: false,
       label:
-        "2.4.3 Caso considere necessário, identifique outras tipologias de grupo social vulnerável em que podemos enquadrar o Agregado Familiar.",
-      optional: true,
-      max: 500,
-      autoform: {
-        type: "textarea",
-      },
-    },
-    afLivesInBadComunity: {
-      type: SimpleSchema.Integer,
-      label:
-        '2.5 O Agregado Familiar reside em território de comunidade desfavorecida, identificado no "plano de ação integrado para comunidades / agregados desfavorecidos" do Município de Celorico da Beira?',
-      optional: true,
+        "1. Identifique a tipologia da habitação ocupada (número de quartos da habitação onde reside o Agregado Familiar).",
       autoform: {
         type: "select",
         options: function () {
-          return afLivesInBadComunity;
+          return residenceTypeOptions;
         },
       },
-    },
-    // 3. Caraterização geral do alojamento do AF
-    neighborhoodTypology: {
-      type: SimpleSchema.Integer,
-      optional: true,
-      label:
-        "3.1 Identifique o tipo de espaço urbano onde se localiza a residência do Agregado Familiar.",
-      autoform: {
-        type: "select",
-        options: function () {
-          return neighborhoodTypology;
-        },
-      },
-    },
-    residenceType: {
-      type: SimpleSchema.Integer,
-      optional: true,
-      label:
-        "3.2 Identifique o tipo de construção da habitação onde reside o Agregado Familiar. ",
-      autoform: {
-        type: "select",
-        options: function () {
-          return residenceType;
-        },
-      },
-    },
-    roomsQuantity: {
-      type: SimpleSchema.Integer,
-      optional: true,
-      label:
-        "3.3 Identifique o número de quartos da habitação onde reside o Agregado Familiar. ",
-      min: 1,
     },
     residenceOcupationType: {
-      type: SimpleSchema.Integer,
+      type: String,
       optional: true,
       label:
-        "3.4.1 Identifique o regime de ocupação da habitação onde reside o Agregado Familiar.",
+        "2. Identifique o regime de ocupação da habitação onde reside o Agregado Familiar.",
       autoform: {
         type: "select",
         options: function () {
@@ -210,169 +150,132 @@ ConsultSchema = new SimpleSchema(
         },
       },
     },
-    residenceOcupationTypeObs: {
-      type: String,
-      label:
-        "3.4.2 Informações adicionais relevantes sobre o regime de ocupação da habitação onde reside o Agregado Familiar. (preenchimento opcional)",
+    residenceUrbanSpace: {
+      type: SimpleSchema.Integer,
       optional: true,
-      max: 500,
+      label:
+        "3. Identifique o tipo de espaço urbano onde se localiza a residência do Agregado Familiar.",
       autoform: {
-        type: "textarea",
-      },
-    },
-    roomsQuantity: {
-      type: Number,
-      optional: true,
-      label:
-        "3.4.3 Identifique, se possível, o valor de renda ou de prestação bancária (para os casos aplicáveis) suportado pelo Agregado Familiar. (valor mensal)",
-      min: 1,
-      max: 20,
-    },
-    habObjectiveDepravation: {
-      type: Array,
-      label:
-        "3.5.1 Assinale as situações de carências habitacionais objetivas que podem ser associadas ao Agregado Familiar (podem ser assinaladas múltiplas opções)",
-      optional: true,
-      autoform: {
-        type: "select-checkbox",
+        type: "select",
         options: function () {
-          return habObjectiveDepravation;
+          return residenceUrbanOptions;
         },
       },
     },
-    "habObjectiveDepravation.$": SimpleSchema.Integer,
-    habObjectiveDepravationObs: {
-      type: String,
-      label:
-        "3.5.2 Descreva outras situações (não mencionadas na questão anterior) que considere relevantes para a descrição e identificação de carências habitacionais. (preenchimento opcional)",
+    residenceConstructionType: {
+      type: SimpleSchema.Integer,
       optional: true,
-      max: 500,
+      label:
+        "4. Identifique o tipo de construção da habitação onde reside o Agregado Familiar.",
       autoform: {
-        type: "textarea",
+        type: "select",
+        options: function () {
+          return residenceConstructionOptions;
+        },
+      },
+    },
+    residenceProblems: {
+      type: SimpleSchema.Integer,
+      optional: true,
+      label:
+        "5. Identifique quais os problemas principais de enquadramento/integração territorial relativos à habitação ocupada pelo AF",
+      autoform: {
+        type: "select-checkbox",
+        options: function () {
+          return residenceProblemOptions;
+        },
       },
     },
 
-    // 4. Situação social e económica do agregado familiar
-    significativeSocialProblems: {
-      type: Array,
+    // End of Part 2
+
+    // Begin of Part 3 - Primeiro Direito
+    firstPrecary: {
+      type: SimpleSchema.Integer,
       label:
-        "4.1.1 Assinale o conjunto de problemas sócio-económicos (sinalizados oficialmente ou dos quais existem 'suspeitas' de que ocorrem), que considere explicativos das situações de carências habitacionais enfrentadas pelo Agregado Familiar. (podem ser assinaladas múltiplas opções)",
-      optional: true,
+        "1. Assinale as situações de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a PRECARIEDADE (pode assinalar mais do que uma opção)",
       autoform: {
         type: "select-checkbox",
         options: function () {
-          return significativeSocialProblems;
+          return firstOptions_1;
         },
       },
     },
-    "significativeSocialProblems.$": SimpleSchema.Integer,
-    significativeSocialProblemsObs: {
-      type: String,
-      label:
-        "4.1.2 Descreva outros problemas sociais e económicos que considere relevantes mas não assinalados na questão anterior.",
-      optional: true,
-      max: 500,
-      autoform: {
-        type: "textarea",
-      },
-    },
-    // Percepção geral sobre Carências Sociais e Económicas do AF
-    generalAFSocialPerception: {
+    firstUnsafe: {
       type: SimpleSchema.Integer,
-      optional: true,
       label:
-        "4.2 Identifique qual a sua percepção geral sobre a existência de carências sociais e económicas no Agregado Familiar.",
-      autoform: {
-        type: "select",
-        options: function () {
-          return generalAFSocialPerception;
-        },
-      },
-    },
-    // Número de elementos do AF utentes de estruturas das rede social / IPSSs?
-    afUtenteNumber: {
-      type: Number,
-      optional: true,
-      label:
-        "4.3 Identifique o número de elementos do Agregado Familiar que sejam utentes de pelo menos um serviço oferecido por instituições da rede social (IPSSs, ...).",
-      min: 1,
-      max: 20,
-    },
-    socialServicesToAfFromSource: {
-      type: Array,
-      label:
-        "4.4.1 Identifique os apoios sociais prestados pela instituição (do respondente deste inquérito) a elementos do Agregado Familiar. (podem ser assinaladas múltiplas opções)",
-      optional: true,
+        "2. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a INSALUBRIDADE e INSEGURANÇA (pode assinalar mais do que uma opção)",
       autoform: {
         type: "select-checkbox",
         options: function () {
-          return socialServicesToAfFromSource;
+          return firstOptions_2;
         },
       },
     },
-    "socialServicesToAfFromSource.$": SimpleSchema.Integer,
-    socialServicesToAfFromSourceObs: {
-      type: String,
-      label:
-        "4.4.2 Descreva outros apoios sociais, não descritos na questão anterior, prestados pela instituição (do respondente) a elementos do Agregado Familiar. (preenchimento opcional)",
-      optional: true,
-      max: 500,
-      autoform: {
-        type: "textarea",
-      },
-    },
-    sourcesAndTotalValuesAF: {
-      type: Array,
-      optional: true,
-      label:
-        "4.5 Descreva, na medida do possível, as fontes e valores dos rendimentos mensais do Agregado Familiar.",
-      maxCount: 9,
-    },
-    "sourcesAndTotalValuesAF.$": {
-      type: Object,
-      optional: true,
-      label: "Fonte",
-    },
-    "sourcesAndTotalValuesAF.$.sources": {
+    firstLotation: {
       type: SimpleSchema.Integer,
-      optional: true,
-      label: "Fontes",
+      label:
+        "3. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a SOBRELOTAÇÃO",
       autoform: {
         type: "select",
-        options: function () {
-          return sourcesAndTotalValuesAF;
+        options: {
+          function() {
+            let firstOptions_3 = [
+              {
+                label:
+                  "Alojamento de dimensão inadequada face ao tamanho do agregado familiar (falta de 2 ou mais divisões)",
+                value: 0,
+              },
+              { label: "Nenhuma", value: 1 },
+            ];
+            return firstOptions_3;
+          },
         },
       },
     },
-    "sourcesAndTotalValuesAF.$.value": {
-      type: Number,
-      optional: true,
-      label: "Valor Aproximado",
-      optional: true,
-    },
-    "sourcesAndTotalValuesAF.$.details": {
-      type: String,
-      max: 200,
-      label: "Detalhes",
-      optional: true,
-    },
-    subjectiveEvaluationPercent: {
-      type: Number,
-      optional: true,
+    firstInadequate: {
+      type: SimpleSchema.Integer,
       label:
-        "4.6 Avaliação subjetiva do grau de esforço económico do Agregado Familiar com a habitação - incluindo despesas com serviços básicos essenciais - electricidade, água, saneamento; indique a percentagem estimada do do rendimento total do Agregado Familiar a que correspondem as despesas referidas,",
-      min: 1,
-      max: 500,
-    },
-    aditionalInformation: {
-      type: String,
-      label: "5 Informação complementar / Observações",
-      optional: true,
-      max: 500,
+        "4. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a INADEQUAÇÃO (pode assinalar mais do que uma opção)",
       autoform: {
-        type: "textarea",
+        type: "select-checkbox",
+        options: function () {
+          return firstOptions_4;
+        },
       },
     },
+    firstDescription: {
+      type: SimpleSchema.Integer,
+      label:
+        "5. Existem outras situaçoes de vulnerabilidade socioeconomica a assinalar?",
+    },
+    firstMoreVulnerabilities: {
+      type: SimpleSchema.Integer,
+      label:
+        "6. Se respondeu afirmativamente, indique que outro tipo vulnerabilidade socieconómica está associada ao agregado familiar (pode selecionar mais do que uma opção)",
+    },
+    firstDetails: {
+      type: String,
+      label:
+        "7. Caso considere relevante, descreva com maior detalhe as situações assinaladas nas questões anteriores.",
+    },
+    firstSalary: {
+      type: SimpleSchema.Integer,
+      label:
+        "8. Indique, se possível, de entre as seguintes opções, as fontes dos rendimentos mensais dos agregados familiares",
+    },
+    firstSalaryMain: {
+      type: SimpleSchema.Integer,
+      label:
+        "9. Indique, se possível, os valores do rendimento mensal do agregado familiar",
+    },
+    firstSocialSuport: {
+      type: SimpleSchema.Integer,
+      label:
+        "10. Identifique, caso existam, os apoios sociais prestados pela instituição ao agregado familiar.",
+    },
+
+    // End of Part 3
   },
   { tracker: Tracker }
 );

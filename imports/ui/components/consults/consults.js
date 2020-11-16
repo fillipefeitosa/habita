@@ -18,7 +18,6 @@ Template.consults.helpers({
       "Britelo, Gémeos e Ourilhe": "Britelo, Gémeos e Ourilhe",
       "Caçarilhe e Infesta": "Caçarilhe e Infesta",
     };
-
     return options;
   },
 });

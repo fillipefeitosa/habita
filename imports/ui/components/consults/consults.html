@@ -23,12 +23,27 @@
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <!-- <h4>Caraterização geral da Habitação de residência permanente do Agregado Familiar</h4> -->
             <br><br>
-            {{> afQuickField name='site'}}
+            {{> afQuickField name='residencetypeOf'}}
+            {{> afQuickField name='residenceOcupationType'}}
+            {{> afQuickField name='residenceUrbanSpace' }}
+            {{> afQuickField name='residenceConstructionType'}}
+            {{> afQuickField name='residenceProblems' }}
         </div>
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
             <!-- <h4>Questões relativas ao primeiro direito</h4> -->
             <br><br>
-            {{> afQuickField name='size'}}
+            {{> afQuickField name='firstPrecary'}}
+            {{> afQuickField name='firstUnsafe'}}
+            {{> afQuickField name='firstLotation'}}
+            {{> afQuickField name='firstInadequate'}}
+            {{> afQuickField name='firstDescription'}}
+            {{> afQuickField name='firstMoreVulnerabilities'}}
+            {{> afQuickField name='firstDetails'}}
+            {{> afQuickField name='firstSalary'}}
+            {{> afQuickField name='firstSalaryMain'}}
+            {{> afQuickField name='firstSocialSuport'}}
+            {{> afQuickField name='firstPrecary'}}
+
         </div>
     </div>
     {{/autoForm}}
