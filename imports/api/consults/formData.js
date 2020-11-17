@@ -278,7 +278,7 @@ export const firstOptions_1 = [
       "Habitação sem licença de habitabilidade (sem licença de utilização para habitação)",
     value: 5,
   },
-  { label: "Outra. Especificar", value: 6 },
+  { label: "Outra. (Especificar no campo 11)", value: 6 },
   { label: "Nenhuma", value: 7 },
 ];
 
@@ -309,7 +309,7 @@ export const firstOptions_2 = [
     label:
       "Alojamento sem uma manutenção adequada  a nível de limpeza e higiene ",
   },
-  { value: 6, label: "Outra. Especificar" },
+  { value: 6, label: "Outra. (Especificar no campo 11)" },
   { value: 7, label: "Nenhuma" },
 ];
 
@@ -357,7 +357,7 @@ export const firstOptions_6 = [
       "reside em território de comunidade desfavorecida, identificado no 'plano de ação integrado para comunidades / agregados desfavorecidos'",
   },
   { value: 6, label: "Em situação de carência financeira" },
-  { value: 7, label: "Outra. Especifique" },
+  { value: 7, label: "Outra. (Especificar no campo 11)" },
 ];
 
 export const significativeSocialProblems = [
@@ -404,7 +404,7 @@ export const firstOptions_8 = [
   { value: 6, label: "Atividade Profissional - tempo parcial" },
   { value: 7, label: "Atividade Profissional - tempo inteiro" },
   { value: 8, label: "Sem rendimentos conhecidos" },
-  { value: 9, label: "Outro. qual?" },
+  { value: 9, label: "Outro. qual? (Preencher no campo 6)" },
 ];
 export const firstOptions_10 = [
   { value: 0, label: "Institucionalização de membro do agregado familiar" },
