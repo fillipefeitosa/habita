@@ -10,21 +10,48 @@
             </tr>
         </thead>
         <tbody class="text-center">
-            {{#each consults}}
-            <tr>
-                <td>{{ _id }}</td>
-                <!-- {{#each element }}
-                <td>{{ name }}</td>
-                {{/each}} -->
-                <td>{{ element.[0].name }}</td>
-                <td>{{ site }}</td>
-                <td class="text-center">
-                    <a href="formupdate/{{_id}}" >
-                        <i class="fa fa-edit"></i> Editar
-                    </a>
-                </td>
-            </tr>
-            {{/each}}
+            {{#if isInRole 'Colaborador'}}
+            {{> consultsColaborador}}
+            {{/if}}
+            {{#if isInRole 'Administrador'}}
+            {{> consultsAdmin }}
+            {{/if}}
         </tbody>
     </table>
+</template>
+
+<template name="consultsColaborador">
+    {{#each consults}}
+    <tr>
+        <td>{{ _id }}</td>
+        <!-- {{#each element }}
+        <td>{{ name }}</td>
+        {{/each}} -->
+        <td>{{ element.[0].name }}</td>
+        <td>{{ site }}</td>
+        <td class="text-center">
+            <a href="/habita/formupdate/{{_id}}">
+                <i class="fa fa-edit"></i> Editar
+            </a>
+        </td>
+    </tr>
+    {{/each}}
+</template>
+
+<template name="consultsAdmin">
+    {{#each consults}}
+    <tr>
+        <td>{{ _id }}</td>
+        <!-- {{#each element }}
+        <td>{{ name }}</td>
+        {{/each}} -->
+        <td>{{ element.[0].name }}</td>
+        <td>{{ site }}</td>
+        <td class="text-center">
+            <a href="/habita/formupdate/{{_id}}">
+                <i class="fa fa-edit"></i> Editar
+            </a>
+        </td>
+    </tr>
+    {{/each}}
 </template>
