@@ -72,6 +72,7 @@ export const qualifications = [
   { label: "Ensino superior", value: 6 },
 ];
 export const relationship = [
+  { label: "Representante", value: "representante" },
   { label: "pai", value: "pai" },
   { label: "mãe", value: "mãe" },
   { label: "filho/a", value: "filho/a" },
@@ -312,6 +313,15 @@ export const firstOptions_2 = [
   { value: 7, label: "Nenhuma" },
 ];
 
+export const firstOptions_3 = [
+  {
+    value: 0,
+    label:
+      "Alojamento de dimensão inadequada face ao tamanho do agregado familiar (falta de 2 ou mais divisões)",
+  },
+  { value: 1, label: "Nenhuma" },
+];
+
 export const firstOptions_4 = [
   {
     value: 0,
@@ -329,6 +339,25 @@ export const firstOptions_4 = [
       "Alojamento inadequado face  às caraterísticas específicas dos residentes nomeadamente com incapacidade ou deficiência  - Barreiras internas à habitação (medidas de vãos e áreas interiores impedem uma circulação e utilização ajustadas ás caraterísticas dos ocupantes da habitação)",
   },
   { value: 3, label: "Nenhuma" },
+];
+
+export const firstOptions_6 = [
+  { value: 0, label: "Pessoas pertencentes a minorias etnicas" },
+  { value: 1, label: "Pessoas imigrantes" },
+  {
+    value: 2,
+    label:
+      "Pessoas portadoras de deficiência / incapacidade permanente/ doenças crónicas",
+  },
+  { value: 3, label: "Pessoas com problemas de dependência (alcool, drogas)" },
+  { value: 4, label: "Agregado monoparental com dependentes" },
+  {
+    value: 5,
+    label:
+      "reside em território de comunidade desfavorecida, identificado no 'plano de ação integrado para comunidades / agregados desfavorecidos'",
+  },
+  { value: 6, label: "Em situação de carência financeira" },
+  { value: 7, label: "Outra. Especifique" },
 ];
 
 export const significativeSocialProblems = [
@@ -359,6 +388,33 @@ export const significativeSocialProblems = [
   },
 ];
 
+export const firstOptions_8 = [
+  { value: 0, label: "Pensoes sociais - RSI" },
+  { value: 1, label: "Pensões sociais - Pensão de reforma" },
+  { value: 2, label: "Pensões sociais - Pensão de invalidez" },
+  {
+    value: 3,
+    label: "Pensões sociais - Subsídio de desemprego (período normal)",
+  },
+  {
+    value: 4,
+    label: "Pensões sociais -  Subsídio de desemprego (longa duração)",
+  },
+  { value: 5, label: "Pensões sociais - Complemento solidário para idosos" },
+  { value: 6, label: "Atividade Profissional - tempo parcial" },
+  { value: 7, label: "Atividade Profissional - tempo inteiro" },
+  { value: 8, label: "Sem rendimentos conhecidos" },
+  { value: 9, label: "Outro. qual?" },
+];
+export const firstOptions_10 = [
+  { value: 0, label: "Institucionalização de membro do agregado familiar" },
+  { value: 1, label: "Apoio alimentar" },
+  { value: 2, label: "Apoio domiciliário" },
+  { value: 3, label: "Ocupação de idosos/centro do dia" },
+  { value: 4, label: "Ocupação de crianças e jovens (horário pós escolar)" },
+  { value: 5, label: "Apoio financeiro" },
+  { value: 6, label: "Outros. Qual?" },
+];
 export const generalAFSocialPerception = [
   {
     label:

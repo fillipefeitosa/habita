@@ -12,7 +12,11 @@ import {
   habObjectiveDepravation,
   firstOptions_1,
   firstOptions_2,
+  firstOptions_3,
   firstOptions_4,
+  firstOptions_6,
+  firstOptions_8,
+  firstOptions_10,
 } from "./formData.js";
 import {
   neighborhoodTypology,
@@ -30,6 +34,8 @@ import {
 } from "./formData.js";
 
 SimpleSchema.extendOptions(["autoform"]);
+
+SimpleSchema.debug = true;
 
 export const Consults = new Mongo.Collection("Consults");
 
@@ -57,10 +63,10 @@ ConsultSchema = new SimpleSchema(
     },
     // 1. Caracterização e Localização do AF
     generalPerception: {
-      type: SimpleSchema.Integer,
+      type: String,
       label:
         "1. Identifique qual a sua percepção geral sobre a existência de carências sociais e económicas no Agregado Familiar.",
-      optional: false,
+      optional: true,
       autoform: {
         type: "select-radio",
         options: function () {
@@ -68,12 +74,14 @@ ConsultSchema = new SimpleSchema(
             {
               label:
                 "AF em situação de carência social e económica visível / declarada / sinalizada",
-              value: 0,
+              value:
+                "AF em situação de carência social e económica visível / declarada / sinalizada",
             },
             {
               label:
                 "AF em situação de carência social e económica escondida / suspeita de / não sinalizada",
-              value: 1,
+              value:
+                "AF em situação de carência social e económica escondida / suspeita de / não sinalizada",
             },
           ];
           return perceptionOptions;
@@ -89,24 +97,26 @@ ConsultSchema = new SimpleSchema(
     size: {
       type: SimpleSchema.Integer,
       label: "3. Dimensão(nº de pessoas)",
+      optional: false,
       min: 1,
     },
     element: {
       type: Array,
-      optional: true,
+      optional: false,
       label: "Membros da Família",
-      maxCount: 9,
+      maxCount: 12,
+      minCount: 1,
     },
     "element.$": {
       type: Object,
-      optional: true,
+      optional: false,
       label: "Membro da Família",
     },
     "element.$.name": {
       type: String,
       max: 200,
       label: "Nome",
-      optional: true,
+      optional: false,
     },
     "element.$.age": {
       type: SimpleSchema.Integer,
@@ -140,7 +150,7 @@ ConsultSchema = new SimpleSchema(
     },
     residenceOcupationType: {
       type: String,
-      optional: true,
+      optional: false,
       label:
         "2. Identifique o regime de ocupação da habitação onde reside o Agregado Familiar.",
       autoform: {
@@ -152,7 +162,7 @@ ConsultSchema = new SimpleSchema(
     },
     residenceUrbanSpace: {
       type: SimpleSchema.Integer,
-      optional: true,
+      optional: false,
       label:
         "3. Identifique o tipo de espaço urbano onde se localiza a residência do Agregado Familiar.",
       autoform: {
@@ -175,7 +185,7 @@ ConsultSchema = new SimpleSchema(
       },
     },
     residenceProblems: {
-      type: SimpleSchema.Integer,
+      type: Array,
       optional: true,
       label:
         "5. Identifique quais os problemas principais de enquadramento/integração territorial relativos à habitação ocupada pelo AF",
@@ -186,12 +196,25 @@ ConsultSchema = new SimpleSchema(
         },
       },
     },
+    "residenceProblems.$": SimpleSchema.Integer,
+
+    residenceObs: {
+      type: String,
+      optional: true,
+      label:
+        "6. Campo reservado para detalhes adicionais, ou caso tenha selecionado 'Outro, quais?' nos campos anteriores.",
+      autoform: {
+        rows: 3,
+      },
+    },
 
     // End of Part 2
 
     // Begin of Part 3 - Primeiro Direito
+
     firstPrecary: {
-      type: SimpleSchema.Integer,
+      type: Array,
+      optional: true,
       label:
         "1. Assinale as situações de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a PRECARIEDADE (pode assinalar mais do que uma opção)",
       autoform: {
@@ -201,8 +224,11 @@ ConsultSchema = new SimpleSchema(
         },
       },
     },
+    "firstPrecary.$": SimpleSchema.Integer,
+
     firstUnsafe: {
-      type: SimpleSchema.Integer,
+      type: Array,
+      optional: true,
       label:
         "2. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a INSALUBRIDADE e INSEGURANÇA (pode assinalar mais do que uma opção)",
       autoform: {
@@ -212,29 +238,23 @@ ConsultSchema = new SimpleSchema(
         },
       },
     },
+    "firstUnsafe.$": SimpleSchema.Integer,
+
     firstLotation: {
       type: SimpleSchema.Integer,
+      optional: true,
       label:
         "3. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a SOBRELOTAÇÃO",
       autoform: {
         type: "select",
-        options: {
-          function() {
-            let firstOptions_3 = [
-              {
-                label:
-                  "Alojamento de dimensão inadequada face ao tamanho do agregado familiar (falta de 2 ou mais divisões)",
-                value: 0,
-              },
-              { label: "Nenhuma", value: 1 },
-            ];
-            return firstOptions_3;
-          },
+        options: function () {
+          return firstOptions_3;
         },
       },
     },
     firstInadequate: {
-      type: SimpleSchema.Integer,
+      type: Array,
+      optional: true,
       label:
         "4. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a INADEQUAÇÃO (pode assinalar mais do que uma opção)",
       autoform: {
@@ -244,37 +264,101 @@ ConsultSchema = new SimpleSchema(
         },
       },
     },
+    "firstInadequate.$": SimpleSchema.Integer,
+
     firstDescription: {
       type: SimpleSchema.Integer,
+      optional: true,
       label:
         "5. Existem outras situaçoes de vulnerabilidade socioeconomica a assinalar?",
+      autoform: {
+        type: "select-radio",
+        options: function () {
+          let options = [
+            { label: "Sim", value: 1 },
+            { label: "Não", value: 0 },
+          ];
+          return options;
+        },
+      },
     },
     firstMoreVulnerabilities: {
-      type: SimpleSchema.Integer,
+      type: Array,
+      optional: true,
       label:
         "6. Se respondeu afirmativamente, indique que outro tipo vulnerabilidade socieconómica está associada ao agregado familiar (pode selecionar mais do que uma opção)",
+      autoform: {
+        type: "select-checkbox",
+        options: function () {
+          return firstOptions_6;
+        },
+      },
     },
+    "firstMoreVulnerabilities.$": SimpleSchema.Integer,
+
     firstDetails: {
       type: String,
+      optional: true,
       label:
         "7. Caso considere relevante, descreva com maior detalhe as situações assinaladas nas questões anteriores.",
     },
     firstSalary: {
-      type: SimpleSchema.Integer,
+      type: Array,
+      optional: true,
       label:
         "8. Indique, se possível, de entre as seguintes opções, as fontes dos rendimentos mensais dos agregados familiares",
+      autoform: {
+        type: "select-checkbox",
+        options: function () {
+          return firstOptions_8;
+        },
+      },
     },
+    "firstSalary.$": SimpleSchema.Integer,
     firstSalaryMain: {
-      type: SimpleSchema.Integer,
+      type: Array,
+      optional: true,
       label:
         "9. Indique, se possível, os valores do rendimento mensal do agregado familiar",
+      maxCount: 9,
+    },
+    "firstSalaryMain.$": {
+      type: Object,
+      optional: true,
+      label: "rendimento",
+    },
+    "firstSalaryMain.$.source": {
+      type: String,
+      max: 200,
+      label: "Fonte do Rendimento",
+      optional: true,
+    },
+    "firstSalaryMain.$.value": {
+      type: Number,
+      label: "Valor (€)",
     },
     firstSocialSuport: {
-      type: SimpleSchema.Integer,
+      type: Array,
+      optional: true,
       label:
         "10. Identifique, caso existam, os apoios sociais prestados pela instituição ao agregado familiar.",
+      autoform: {
+        type: "select-checkbox",
+        options: function () {
+          return firstOptions_10;
+        },
+      },
     },
-
+    "firstSocialSuport.$": SimpleSchema.Integer,
+    firstObs: {
+      type: String,
+      optional: true,
+      label:
+        "11. Campo reservado para detalhes adicionais, ou caso tenha selecionado 'Outro, quais?' nos campos anteriores.",
+      autoform: {
+        rows: 3,
+      },
+    },
     // End of Part 3
   },
   { tracker: Tracker }

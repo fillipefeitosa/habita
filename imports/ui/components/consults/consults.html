@@ -1,5 +1,6 @@
 <template name="consults">
     <!-- {{> quickForm collection=formCollection id="consultsForm" type="insert"}} -->
+
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
@@ -8,6 +9,8 @@
                 aria-controls="nav-profile" aria-selected="false">Caraterização da Habitação</a>
             <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
                 aria-controls="nav-contact" aria-selected="false">Primeiro Direito</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-submit" role="tab"
+                aria-controls="nav-contact" aria-selected="false">Submeter</a>
         </div>
     </nav>
     {{#autoForm collection=formCollection id="consultsForm" type="insert"}}
@@ -15,10 +18,13 @@
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <!-- <h4>Caraterização do Agregado Familiar</h4> -->
             <br><br>
+            {{> afQuickField name='submitedBy' type="hidden"}}
             {{> afQuickField name='generalPerception'}}
             {{> afQuickField name='site' options=sitesOptions}}
             {{> afQuickField name='size'}}
             {{> afQuickField name='element'}}
+
+
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <!-- <h4>Caraterização geral da Habitação de residência permanente do Agregado Familiar</h4> -->
@@ -28,6 +34,7 @@
             {{> afQuickField name='residenceUrbanSpace' }}
             {{> afQuickField name='residenceConstructionType'}}
             {{> afQuickField name='residenceProblems' }}
+            {{> afQuickField name='residenceObs' }}
         </div>
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
             <!-- <h4>Questões relativas ao primeiro direito</h4> -->
@@ -38,11 +45,25 @@
             {{> afQuickField name='firstInadequate'}}
             {{> afQuickField name='firstDescription'}}
             {{> afQuickField name='firstMoreVulnerabilities'}}
-            {{> afQuickField name='firstDetails'}}
+            {{> afQuickField name='firstDetails' rows=4}}
             {{> afQuickField name='firstSalary'}}
             {{> afQuickField name='firstSalaryMain'}}
             {{> afQuickField name='firstSocialSuport'}}
-            {{> afQuickField name='firstPrecary'}}
+            {{> afQuickField name='firstObs' }}
+
+        </div>
+        <div class="tab-pane fade" id="nav-submit" role="tabpanel" aria-labelledby="nav-submit">
+            <br><br>
+            <h4>Prima o botão para submeter o formulário.</h4>
+            <p>Caso o formulário não seja submetido, devem existir pendências no preenchimento
+                de campos obrigatórios. Revise as outras abas para verificar os campos obrigatórios.
+            </p>
+
+            <p>É possível aceder e editar o preenchimento no menu <b>Lista de Registos</b></p>
+
+            <button type="submit" class="btn btn-primary">Submeter</button>
+
+
 
         </div>
     </div>
