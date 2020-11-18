@@ -12,7 +12,6 @@ Template.login.events({
 });
 
 Template.register.events({
-<<<<<<< HEAD
   "submit form": function (event) {
     event.preventDefault();
     var userObject = {
@@ -30,22 +29,3 @@ Template.register.events({
     });
   },
 });
-=======
-    'submit form': function(event){
-        event.preventDefault();
-        var userObject = { 
-            email: event.target.email.value, 
-            password: event.target.password.value
-        }; 
-         
-        Accounts.createUser(userObject, function(err) { 
-            if(err){
-                console.log(err);
-                window.alert(err.reason)
-            } else {
-                // Default Behavior. User should LogIn
-            }
-        });
-    }
-})
->>>>>>> 539ed00fd7ec666c3b53ca12266356d4bbeb12d5

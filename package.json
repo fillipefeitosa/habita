@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^3.0.6",
     "bootstrap": "^4.5.3",
     "bootstrap-multiselect": "^0.9.15",
     "font-awesome": "^4.7.0",
