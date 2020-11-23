@@ -13,6 +13,8 @@
                 aria-controls="nav-contact" aria-selected="false">Submeter</a>
         </div>
     </nav>
+
+    {{#if verifyConsent}}
     {{#autoForm collection=formCollection id="consultsForm" type="insert"}}
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -68,4 +70,18 @@
         </div>
     </div>
     {{/autoForm}}
+    {{else}}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Sem consentimento.</h1>
+            <hr class="my-4">
+            <p class="lead">É necessário tomar conhecimento das notas técnicas e
+                aprovar o termo de consentimento na página Instruções antes de preencher o formulário de
+                agregado familiar.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="/habita/instructions" role="button">Instruções</a>
+            </p>
+        </div>
+    </div>
+    {{/if}}
 </template>

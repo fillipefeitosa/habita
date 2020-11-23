@@ -66,6 +66,17 @@ loggedIn.route("/", {
   },
 });
 
+loggedIn.route("/instructions", {
+  name: "App.instructions",
+  action() {
+    BlazeLayout.render("App_body", {
+      main: "App_home",
+      pageContent: "instructions",
+      sidemenu: "sidemenu",
+    });
+  },
+});
+
 loggedIn.route("/consult", {
   name: "consult",
   action: function () {

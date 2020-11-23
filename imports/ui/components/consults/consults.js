@@ -1,23 +1,17 @@
 import { Consults } from "/imports/api/consults/consults.js";
-
+import "sweetalert";
 import "./consults.html";
+import swal from "sweetalert";
 
 // Autoform Hooks
 AutoForm.addHooks(null, {
   onError: function (name, error, template) {
     console.log(name + " error:", error);
+    swal("Registo Incompleto", "Campo Obrigatório:" + error, "error");
   },
   onSuccess: function (formType, result) {
     AutoForm.resetForm("consultsForm");
-    console.log("SUBMETIDO!1");
-    console.log(result);
-    console.log(formType);
-  },
-
-  consultsForm: {
-    onSuccess: function (formType, result) {
-      console.log("FORM SUBMETIDO!!!");
-    },
+    swal("Sucesso", "Agregado familiar inserido com sucesso", "success");
   },
 });
 
@@ -29,6 +23,11 @@ Template.consults.helpers({
   formCollection() {
     return Consults;
   },
+  verifyConsent() {
+    userConsent = Meteor.user().profile.consent;
+    return userConsent;
+  },
+
   sitesOptions() {
     let options = {
       Agilde: "Agilde",
