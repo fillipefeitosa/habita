@@ -5,19 +5,19 @@ import { Links } from '../../api/links/links.js';
 
 Meteor.startup(() => {
     // Roles Routine for server startup
-   var roles = Meteor.roles.find({}).count();
-   if (roles > 0) {
-       console.log("Roles Defined. Default Behavior.");
-   } else {
-       Roles.createRole('Convidado');
-       Roles.createRole('Colaborador');
-       Roles.createRole('Administrador');
-   }
-   // Make new user as 'Convidado role'
-   Accounts.onCreateUser(function(options, user){
-       user.roles = ['Colaborador'];
-       return user;
-   });
+    var roles = Meteor.roles.find({}).count();
+    if (roles > 0) {
+        console.log("Roles Defined. Default Behavior.");
+    } else {
+        Roles.createRole('Convidado');
+        Roles.createRole('Colaborador');
+        Roles.createRole('Administrador');
+    }
+    // Make new user as 'Convidado role'
+    Accounts.onCreateUser(function (options, user) {
+        user.roles = ['Colaborador'];
+        return user;
+    });
 
     // if the Links collection is empty
     if (Links.find().count() === 0) {
