@@ -12,6 +12,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "jquery-validation": "^1.19.2",
+    "bcrypt": "3.0.2",
     "meteor-node-stubs": "^0.4.1",
     "node-addon-api": "^3.0.2",
     "popper.js": "^1.16.1",

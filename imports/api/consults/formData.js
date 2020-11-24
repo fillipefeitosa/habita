@@ -167,7 +167,7 @@ export const residenceProblemOptions = [
     value: 7,
   },
   { label: "Falta ou má qualidade de espaços exteriores públicos", value: 8 },
-  { label: "Outro problema. Qual?", value: 9 },
+  { label: "Outro problema. Qual? (Especificar no campo 6)", value: 9 },
 ];
 export const residenceConstructionOptions = [
   { label: "Convencional", value: 0 },
@@ -178,7 +178,7 @@ export const residenceConstructionOptions = [
   { label: "Tenda", value: 5 },
   { label: "Barraca", value: 6 },
   { label: "Construção assente em elementos naturais", value: 7 },
-  { label: "Outra, qual?", value: 8 },
+  { label: "Outra, qual? (especificar no campo 6)", value: 8 },
 ];
 
 export const residenceTypeOptions = [
@@ -317,7 +317,7 @@ export const firstOptions_3 = [
   {
     value: 0,
     label:
-      "Alojamento de dimensão inadequada face ao tamanho do agregado familiar (falta de 2 ou mais divisões)",
+      "Alojamento de dimensão inadequada face ao tamanho do agregado familiar (ver DL Nº81/2020, art. nº 5)",
   },
   { value: 1, label: "Nenhuma" },
 ];
@@ -357,7 +357,7 @@ export const firstOptions_6 = [
       "reside em território de comunidade desfavorecida, identificado no 'plano de ação integrado para comunidades / agregados desfavorecidos'",
   },
   { value: 6, label: "Em situação de carência financeira" },
-  { value: 7, label: "Outra. (Especificar no campo 11)" },
+  { value: 7, label: "Outra. (Especificar no campo 7)" },
 ];
 
 export const significativeSocialProblems = [
@@ -404,7 +404,7 @@ export const firstOptions_8 = [
   { value: 6, label: "Atividade Profissional - tempo parcial" },
   { value: 7, label: "Atividade Profissional - tempo inteiro" },
   { value: 8, label: "Sem rendimentos conhecidos" },
-  { value: 9, label: "Outro. qual? (Preencher no campo 6)" },
+  { value: 9, label: "Outro. qual? (Preencher no campo 9)" },
 ];
 export const firstOptions_10 = [
   { value: 0, label: "Institucionalização de membro do agregado familiar" },
@@ -413,7 +413,7 @@ export const firstOptions_10 = [
   { value: 3, label: "Ocupação de idosos/centro do dia" },
   { value: 4, label: "Ocupação de crianças e jovens (horário pós escolar)" },
   { value: 5, label: "Apoio financeiro" },
-  { value: 6, label: "Outros. Qual?" },
+  { value: 6, label: "Outros." },
 ];
 export const generalAFSocialPerception = [
   {

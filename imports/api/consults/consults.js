@@ -115,7 +115,7 @@ ConsultSchema = new SimpleSchema(
     "element.$.name": {
       type: String,
       max: 200,
-      label: "Nome - Conferir instruções de preenchimento",
+      label: "Nome",
       optional: false,
     },
     "element.$.age": {
