@@ -3,7 +3,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th class="text-center">Código do Registo</th>
+                <th class="text-center">Id</th>
                 <th class="text-center">Elemento Principal</th>
                 <th class="text-center">Lugar</th>
                 <th class="text-center">Ações</th>
@@ -39,16 +39,18 @@
 </template>
 
 <template name="consultsAdmin">
-    {{#each consults}}
+    {{#each consult in consults}}
     <tr>
-        <td>{{ _id }}</td>
+        <!-- <td>{{ consult.submitedBy }}</td> -->
+        <td><a href="#" name="colaboratorProfileModal" id={{consult.submitedBy}}>{{ getColaboratorName
+                consult.submitedBy }}</a></td>
         <!-- {{#each element }}
         <td>{{ name }}</td>
         {{/each}} -->
-        <td>{{ element.[0].name }}</td>
-        <td>{{ site }}</td>
+        <td>{{ consult.element.[0].name }}</td>
+        <td>{{ consult.site }}</td>
         <td class="text-center">
-            <a href="/habita/formupdate/{{_id}}">
+            <a href="/habita/formupdate/{{consult._id}}">
                 <i class="fa fa-edit"></i> Editar
             </a>
         </td>
