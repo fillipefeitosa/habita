@@ -1,4 +1,12 @@
 export const states = [
+  "Pendilhe",
+  "Queiriga",
+  "Touro",
+  "Vila Cova à Coelheira",
+  "Vila Nova de Paiva, Alhais e Fráguas",
+];
+
+export const old_states = [
   "Açores",
   "Aldeia Rica",
   "Baraçal",
@@ -75,10 +83,13 @@ export const relationship = [
   { label: "Representante", value: "representante" },
   { label: "pai", value: "pai" },
   { label: "mãe", value: "mãe" },
-  { label: "filho/a", value: "filho/a" },
-  { label: "irmão/ã", value: "irmão/ã" },
+  { label: "filho", value: "filho" },
+  { label: "filha", value: "filha" },
+  { label: "irmão", value: "irmão" },
+  { label: "irmã", value: "irmã" },
+  { label: "sobrinho", value: "sobrinho" },
+  { label: "sobrinha", value: "sobrinha" },
   { label: "tio/a", value: "tio/a" },
-  { label: "sobrinho/a", value: "sobrinho/a" },
   { label: "parente distante", value: "parente distante" },
   { label: "outro/a", value: "outro/a" },
 ];
@@ -263,6 +274,11 @@ export const habObjectiveDepravation = [
   },
 ];
 
+export const mainFirstOptions = [
+  { label: "Reside em Núcleo Precário", value: 0 },
+  { label: "Reside em Núcleo Degradado", value: 1 },
+  { label: "Não", value: 2 },
+];
 export const firstOptions_1 = [
   { label: "Pessoas sem abrigo", value: 0 },
   { label: "Pessoas vítimas de violência doméstica", value: 1 },
@@ -271,15 +287,18 @@ export const firstOptions_1 = [
       "Pessoas em risco de perda da residência permanente (em risco de despejo, em situação de insolvência, …)",
     value: 2,
   },
-  { label: "Reside em Núcleo Precário", value: 3 },
-  { label: "Reside em Núcleo Degradado", value: 4 },
   {
     label:
       "Habitação sem licença de habitabilidade (sem licença de utilização para habitação)",
-    value: 5,
+    value: 3,
   },
-  { label: "Outra. (Especificar no campo 11)", value: 6 },
-  { label: "Nenhuma", value: 7 },
+  {
+    label:
+      " Não renovação de contrato de arrendamento nos casos de agregados unititulados, agregados que integram pessoas com deficiência ou arrendatários com idade superior a 65 anos;",
+    value: 4,
+  },
+  { label: "Outra. (Especificar no campo 11)", value: 5 },
+  { label: "Nenhuma", value: 6 },
 ];
 
 export const firstOptions_2 = [
@@ -307,7 +326,7 @@ export const firstOptions_2 = [
   {
     value: 5,
     label:
-      "Alojamento sem uma manutenção adequada  a nível de limpeza e higiene ",
+      "Alojamento adaptado de estruturas não convencionais (incluindo adaptação de antigas 'lojas' de animais, de garagens, de anexos / arrumos, de espaços comerciais, entre outras situações não convencionais) ",
   },
   { value: 6, label: "Outra. (Especificar no campo 11)" },
   { value: 7, label: "Nenhuma" },
@@ -326,19 +345,14 @@ export const firstOptions_4 = [
   {
     value: 0,
     label:
-      "Alojamento adaptado de estruturas não convencionais (incluindo adaptação de antigas 'lojas' de animais, de garagens, de anexos / arrumos, de espaços comerciais, entre outras situações não convencionais)",
+      "Alojamento inadequado face  às caraterísticas específicas dos residentes nomeadamente com incapacidade ou deficiência  - Barreiras exteriores à habitação (barreiras no acesso ao piso/local onde se situa a habitação)",
   },
   {
     value: 1,
     label:
-      "Alojamento inadequado face  às caraterísticas específicas dos residentes nomeadamente com incapacidade ou deficiência  - Barreiras exteriores à habitação (barreiras no acesso ao piso/local onde se situa a habitação)",
-  },
-  {
-    value: 2,
-    label:
       "Alojamento inadequado face  às caraterísticas específicas dos residentes nomeadamente com incapacidade ou deficiência  - Barreiras internas à habitação (medidas de vãos e áreas interiores impedem uma circulação e utilização ajustadas ás caraterísticas dos ocupantes da habitação)",
   },
-  { value: 3, label: "Nenhuma" },
+  { value: 2, label: "Nenhuma" },
 ];
 
 export const firstOptions_6 = [

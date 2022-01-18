@@ -14,7 +14,7 @@
             <label for="">Sede da Instituição Representada</label>
             <select class="form-control" name="headquarters">
                 <option selected>{{userProfile.headquarters}}</option>
-                {{#each state in statesBeira}}
+                {{#each state in states}}
                 <option value="{{state}}">{{state}}</option>
                 {{/each}}
             </select>
@@ -30,7 +30,7 @@
             <small id="sitesDefined" class="form-text text-muted">Lugares: {{userProfile.sites}}</small>
             <br>
             <select id="sites" name="sites" class="form-control" multiple>
-                {{#each state in statesBeira}}
+                {{#each state in states}}
                 {{#if userHasStateSelected state }}
                 <option selected="selected" value="{{state}}">{{state}}</option>
                 {{else}}
