@@ -213,8 +213,7 @@ ConsultSchema = new SimpleSchema(
     mainPrecary: {
       type: String,
       optional: false,
-      label:
-        "1. Qual a carência habitacional principal? O agregado familiar enquadra-se em alguma das seguintes situações específicas? (ver art. 11º e 12º, DL 37/2018, na sua redação atual )",
+      label: "1. Qual a carência habitacional principal?",
       autoform: {
         type: "select",
         options: function () {
@@ -223,11 +222,24 @@ ConsultSchema = new SimpleSchema(
       },
     },
 
+    specificPrecary: {
+      type: String,
+      optional: false,
+      label:
+        "2. O agregado familiar enquadra-se em alguma das seguintes situações específicas? (ver art. 11º e 12º, DL 37/2018, na sua redação atual )",
+      autoform: {
+        type: "select",
+        options: function () {
+          return specificOptions;
+        },
+      },
+    },
+
     firstPrecary: {
       type: Array,
       optional: true,
       label:
-        "2. Assinale as situações de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a PRECARIEDADE (pode assinalar mais do que uma opção)",
+        "3. Assinale as situações de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a PRECARIEDADE (pode assinalar mais do que uma opção)",
       autoform: {
         type: "select-checkbox",
         options: function () {
@@ -241,7 +253,7 @@ ConsultSchema = new SimpleSchema(
       type: Array,
       optional: true,
       label:
-        "3. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a INSALUBRIDADE e INSEGURANÇA (pode assinalar mais do que uma opção)",
+        "4. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a INSALUBRIDADE e INSEGURANÇA (pode assinalar mais do que uma opção)",
       autoform: {
         type: "select-checkbox",
         options: function () {
@@ -255,7 +267,7 @@ ConsultSchema = new SimpleSchema(
       type: SimpleSchema.Integer,
       optional: true,
       label:
-        "4. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a SOBRELOTAÇÃO",
+        "5. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a SOBRELOTAÇÃO",
       autoform: {
         type: "select",
         options: function () {
@@ -267,7 +279,7 @@ ConsultSchema = new SimpleSchema(
       type: Array,
       optional: true,
       label:
-        "5. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a INADEQUAÇÃO (pode assinalar mais do que uma opção)",
+        "6. Assinale as opções de carências habitacionais objetivas que podem ser associadas ao agregado familiar relacionadas com a INADEQUAÇÃO (pode assinalar mais do que uma opção)",
       autoform: {
         type: "select-checkbox",
         options: function () {
@@ -281,7 +293,7 @@ ConsultSchema = new SimpleSchema(
       type: SimpleSchema.Integer,
       optional: true,
       label:
-        "6. Existem outras situaçoes de vulnerabilidade socioeconomica a assinalar?",
+        "7. Existem outras situaçoes de vulnerabilidade socioeconomica a assinalar?",
       autoform: {
         type: "select-radio",
         options: function () {
@@ -297,7 +309,7 @@ ConsultSchema = new SimpleSchema(
       type: Array,
       optional: true,
       label:
-        "7. Se respondeu afirmativamente, indique que outro tipo vulnerabilidade socieconómica está associada ao agregado familiar (pode selecionar mais do que uma opção)",
+        "8. Se respondeu afirmativamente, indique que outro tipo vulnerabilidade socieconómica está associada ao agregado familiar (pode selecionar mais do que uma opção)",
       autoform: {
         type: "select-checkbox",
         options: function () {
@@ -311,13 +323,13 @@ ConsultSchema = new SimpleSchema(
       type: String,
       optional: true,
       label:
-        "8. Caso considere relevante, descreva com maior detalhe as situações assinaladas nas questões anteriores.",
+        "9. Caso considere relevante, descreva com maior detalhe as situações assinaladas nas questões anteriores.",
     },
     firstSalary: {
       type: Array,
       optional: true,
       label:
-        "9. Indique, se possível, de entre as seguintes opções, as fontes dos rendimentos mensais dos agregados familiares",
+        "10. Indique, se possível, de entre as seguintes opções, as fontes dos rendimentos mensais dos agregados familiares",
       autoform: {
         type: "select-checkbox",
         options: function () {
@@ -330,7 +342,7 @@ ConsultSchema = new SimpleSchema(
       type: Array,
       optional: true,
       label:
-        "10. Indique, se possível, os valores do rendimento mensal do agregado familiar",
+        "11. Indique, se possível, os valores do rendimento mensal do agregado familiar",
       maxCount: 9,
     },
     "firstSalaryMain.$": {
@@ -352,7 +364,7 @@ ConsultSchema = new SimpleSchema(
       type: Array,
       optional: true,
       label:
-        "11. dentifique, caso existam, apoios sociais prestados ao agregado familiar.",
+        "12. dentifique, caso existam, apoios sociais prestados ao agregado familiar.",
       autoform: {
         type: "select-checkbox",
         options: function () {
@@ -365,7 +377,7 @@ ConsultSchema = new SimpleSchema(
       type: String,
       optional: true,
       label:
-        "12. Campo reservado para detalhes adicionais, ou caso tenha selecionado 'Outro, quais?' nos campos anteriores.",
+        "13. Campo reservado para detalhes adicionais, ou caso tenha selecionado 'Outro, quais?' nos campos anteriores.",
       autoform: {
         rows: 3,
       },

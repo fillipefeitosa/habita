@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 
-MAINTAINER Fillipe Feitosa "fillipefeitosa@gmail.com"
+LABEL author="fillfeitosa@gmail.com" 
+
 
 # build arguments
 ARG APP_PACKAGES
@@ -52,4 +53,4 @@ COPY . /home/meteor/app/.
 RUN curl https://install.meteor.com/ | sh
 
 # run Meteor from the app directory
-CMD cd /home/meteor/app/ && meteor
+CMD cd /home/meteor/app/ && NODE_TLS_REJECT_UNAUTHORIZED=0 meteor

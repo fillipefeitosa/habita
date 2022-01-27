@@ -275,6 +275,13 @@ export const habObjectiveDepravation = [
 ];
 
 export const mainFirstOptions = [
+  { label: "precariedade", value: 0 },
+  { label: "insalubridade e insegurança", value: 1 },
+  { label: "inadequação", value: 2 },
+  { label: "sobrelotação", value: 3 },
+];
+
+specificOptions = [
   { label: "Reside em Núcleo Precário", value: 0 },
   { label: "Reside em Núcleo Degradado", value: 1 },
   { label: "Não", value: 2 },
