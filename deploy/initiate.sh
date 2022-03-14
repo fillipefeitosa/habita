@@ -3,15 +3,12 @@ set -e
 
 ### Configuration ###
 
-SERVER=meteorapp@dcspt-drivitup.ua.pt
-APP_DIR=/var/www/habita
-KEYFILE=
-REMOTE_SCRIPT_PATH=/tmp/deploy-myapp.sh
 DOCKERHUB=fillipefeitosa/habita-prod
 TAG=1.8.3
 
 ### Library ###
 echo "Habita deployment script"
+echo "Should run from MeteorApp root folder: ./deploy/initiate.sh"
 
 function run()
 {
@@ -28,21 +25,18 @@ else
   KEYARG=
 fi
 
-
-export NODE_TLS_REJECT_UNAUTHORIZED=0
+# Legacy mode for MeteorJs needs TLS config
+# export NODE_TLS_REJECT_UNAUTHORIZED=0
 run meteor build --server-only ../output
 run mv ../output/*.tar.gz ./deploy/package.tar.gz
-run tar zxf ./deploy/package.tar.gz -C ./deploy
+run tar zxf ./deploy/package.tar.gz -C .
 
 # Rebuild image with latest meteorapp bundle
-# run docker build . -t $DOCKERHUB:$TAG
-# run docker pull $DOCKERHUB:$TAG
+run cp ./deploy/habita.conf .
+run docker build . -t $DOCKERHUB:$TAG -f deploy/Dockerfile
+run docker push $DOCKERHUB:$TAG
 
-
-# mv ../output/*.tar.gz ./package.tar.gz
-
-# run scp $KEYARG package.tar.gz $SERVER:$APP_DIR/
-# run scp $KEYARG deploy/work.sh $SERVER:$REMOTE_SCRIPT_PATH
-# echo
-# echo "---- Running deployment script on remote server ----"
-# run ssh $KEYARG $SERVER bash $REMOTE_SCRIPT_PATH
+# Clean folder from unecessary files and folders
+run rm -rf bundle/
+run rm ./deploy/package.tar.gz
+run rm habita.conf
