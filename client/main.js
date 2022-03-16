@@ -1,12 +1,21 @@
 // Client entry point, imports all client code
-import 'bootstrap';
-import popper from 'popper.js';
 
-import 'bootstrap-multiselect';
+// Default Code
+import "/imports/startup/client";
+import "/imports/startup/both";
 
-import '/imports/startup/client';
-import '/imports/startup/both';
-
-
+// communitypackages:autoform-bootstrap4
+import "meteor/aldeed:autoform/static";
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.css"; // optional, default theme
+import "@fortawesome/fontawesome-free/js/all.js"; // optional, is using FA5
+import popper from "popper.js";
 global.Popper = popper;
-AutoForm.setDefaultTemplate('bootstrap4');
+
+// import { AutoFormPlainTheme } from "meteor/communitypackages:autoform-plain/static";
+// AutoFormPlainTheme.load();
+// AutoForm.setDefaultTemplate("plain");
+
+import { AutoFormThemeBootstrap4 } from "meteor/communitypackages:autoform-bootstrap4/static";
+AutoFormThemeBootstrap4.load();
+AutoForm.setDefaultTemplate("bootstrap4");

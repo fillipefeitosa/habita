@@ -1,4 +1,5 @@
 <template name="profile">
+
     <h2>Dados do Respondente</h2>
     <form>
         <div class="form-group">
@@ -12,7 +13,7 @@
 
         <div class="form-group">
             <label for="">Sede da Instituição Representada</label>
-            <select class="form-control" name="headquarters">
+            <select class="form-control" name="headquarters" id="headquarters">
                 <option selected>{{userProfile.headquarters}}</option>
                 {{#each state in states}}
                 <option value="{{state}}">{{state}}</option>
@@ -29,7 +30,7 @@
             <label for="">Lugares de Intervenção da Instituição. (Selecione todos os lugares aplicáveis)</label>
             <small id="sitesDefined" class="form-text text-muted">Lugares: {{userProfile.sites}}</small>
             <br>
-            <select id="sites" name="sites" class="form-control" multiple>
+            <select id="sites" name="sites" class="form-control" multiple="multiple">
                 {{#each state in states}}
                 {{#if userHasStateSelected state }}
                 <option selected="selected" value="{{state}}">{{state}}</option>
@@ -39,31 +40,8 @@
                 {{/each}}
             </select>
         </div>
+
     </form>
     <br>
-
-    <!-- {{> instructions_old}} -->
-</template>
-
-<template name="instructions_old">
-    <h3>Instruções</h3>
-    <p>
-        Quando clicar no botão “submeter” (disponível no final da página de Registo),
-        os dados serão guardados no nosso servidor e os campos do formulário
-        serão limpos, podendo adicionar os dados de um novo agregado familiar.
-        Deve repetir este processo para cada um dos agregados familiares
-        que pretenda identificar.</p>
-
-    <p>
-        A alteração de dados de um agregado familiar já guardado deverá ser
-        realizada recorrendo ao menu lateral “Lista de Registos”.
-    </p>
-
-    <p>Nota importante: no menu “Lista de Registos”, a identificação de
-        cada registo de agregado familiar é realizada a partir do “nome”
-        do primeiro elemento do agregado familiar tal como inserido na questão
-        2.3; desta forma, sublinha-se a importância de preencher esta
-        questão com a informação mais precisa possível.
-    </p>
 
 </template>
