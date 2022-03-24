@@ -4,7 +4,7 @@ set -e
 ### Configuration ###
 
 DOCKERHUB=fillipefeitosa/habita-prod
-TAG=1.8.3
+TAG=2.5.6
 
 ### Library ###
 echo "Habita deployment script"
